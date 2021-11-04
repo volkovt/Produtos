@@ -14,11 +14,11 @@ import com.volkovt.administrativo.repository.ProductRepository;
 
 @Service
 public class ProductService {
-	
+
 	@Autowired
 	ProductRepository repository;
 
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Product> getProducts() {
 		return repository.findAll();
 	}
@@ -28,20 +28,18 @@ public class ProductService {
 		validate(product, null);
 		return repository.save(product);
 	}
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	private void validate(Product product, String id) {
-		if(Objects.nonNull(id)) {
-			if(repository.findById(id).isEmpty()) {
-				throw new RegraNegocioExcecao(HttpStatus.NOT_FOUND, "Product not found");
-			}
+		if (Objects.nonNull(id) && repository.findById(id).isEmpty()) {
+			throw new RegraNegocioExcecao(HttpStatus.NOT_FOUND, "Product not found");
 		}
-		
-		if(Objects.nonNull(product) && product.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
+
+		if (Objects.nonNull(product) && product.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
 			throw new RegraNegocioExcecao(HttpStatus.BAD_REQUEST, "Price needs to be bigger than zero");
 		}
 	}
-	
+
 	@Transactional
 	public Product updateProduct(String id, Product product) {
 		validate(product, id);
@@ -49,19 +47,19 @@ public class ProductService {
 		return repository.save(product);
 	}
 
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public Product getProduct(String id) {
 		return repository.findById(id).orElse(null);
 	}
 
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Product> findProducts(BigDecimal min_price, BigDecimal max_price, String q) {
 		String term = null;
-		if(Objects.nonNull(q)) {
+		if (Objects.nonNull(q)) {
 			term = new String(Base64.getDecoder().decode(q)).toUpperCase();
 			term = "%" + term + "%";
 		}
-		
+
 		return repository.findProducts(min_price, max_price, term);
 	}
 

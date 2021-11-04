@@ -65,7 +65,7 @@ public class ProductController {
 	@ApiResponse(code = 200, message = "Produtos encontrados")
 	@ApiOperation("Procurar por produtos.")
 	public List<Product> findProducts(@RequestParam(required = false) @ApiParam(name = "min_price", value = "Valor mínimo que os produtos podem ter", example = "0.0") BigDecimal min_price,
-			@RequestParam(required = false) @ApiParam(name = "max_price", value = "Valor máximo que os produtos podem ter", example = "1.0") BigDecimal max_price, 
+			@RequestParam(required = false) @ApiParam(name = "max_price", value = "Valor máximo que os produtos podem ter", example = "0.0") BigDecimal max_price, 
 			@RequestParam(required = false) @ApiParam(name = "q", value = "Termo usado para consultar a descrição e nome dos produtos (BASE64)") String q) {
 		return service.findProducts(min_price, max_price, q);
 	}
