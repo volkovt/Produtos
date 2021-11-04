@@ -1,7 +1,7 @@
 # project-product
 
 
-# API's
+# API
 
 ### POST	        /products	                Criação de um produto
 ### PUT	          /products/	              Atualização de um produto
