@@ -1,19 +1,32 @@
 package com.volkovt.administrativo.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "PRODUCT")
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Product {
+@Entity
+@Table(name = "tb_product")
+public class Product implements Serializable {
+	private static final long serialVersionUID = 7306093162287354748L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

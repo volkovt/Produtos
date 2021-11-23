@@ -1,0 +1,5 @@
+INSERT INTO tb_product (name, description, price) VALUES ('Nescau', 'Achocolatado', 7.89)
+INSERT INTO tb_product (name, description, price) VALUES ('Toddy', 'Achocolatado', 6.89)
+INSERT INTO tb_product (name, description, price) VALUES ('Nesquik', 'Achocolatado', 7.39)
+INSERT INTO tb_product (name, description, price) VALUES ('Passatempo', 'Bolacha', 3.39)
+INSERT INTO tb_product (name, description, price) VALUES ('Prestigio', 'Bolacha', 3.59)
